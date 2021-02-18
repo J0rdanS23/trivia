@@ -46,6 +46,5 @@ function Answer({text}){
     <div className="Answer">{text}</div>
   );
 }
-console.log("test");
 
 export default App;
