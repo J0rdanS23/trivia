@@ -24,6 +24,7 @@ function Question({text, answers}) {
 
   //answers.map();
 
+
   return (
   <div className="Question">{text}
     <Answer text={data[questionNumber].question.choices[0]}/>
