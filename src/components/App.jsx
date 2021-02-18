@@ -16,21 +16,21 @@ var questionNumber = 0;
 
 function Question({text, answers}) {
   //var numOfChoices = data[questionNumber].question.choice.length();
-  /*var answers = "";
+  /* var answers = "";
   for(var i = 0; i < numOfChoices; i++){
     answers += "<Answer text=\"
   }
   */
 
-  //answers.map();
-
+  var answersChoices = data[questionNumber].question.choices.map((choice) => {
+return(
+  <Answer text={choice}/>
+)
+  });
 
   return (
   <div className="Question">{text}
-    <Answer text={data[questionNumber].question.choices[0]}/>
-    <Answer text={data[questionNumber].question.choices[1]}/>
-    <Answer text={data[questionNumber].question.choices[2]}/>
-    <Answer text={data[questionNumber].question.choices[3]}/>
+    {answersChoices}
   </div>
   );
 }
@@ -46,5 +46,8 @@ function Answer({text}){
     <div className="Answer">{text}</div>
   );
 }
+
+console.log("Hello, world!");
+
 
 export default App;
