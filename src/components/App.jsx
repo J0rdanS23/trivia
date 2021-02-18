@@ -3,16 +3,24 @@ import "../css/App.css";
 import data from "../sample_data.json";
 
 function App() {
+  let[questionNumber, setNumber] = useState(0);
+  let[questionAnswered, setAnswer] = useState("The correct answer was not answered");
+  const changeAnswer = setAnswer("The correct answer is " + questionData.choices[questionData.correct_choice_index]);
+  
   return (
 
   <div className="app">Trivia!
-    <Question text = {data[questionNumber].question.text}/>
+    <Question text = {questionData.text}/>
+    <button onClick={() => changeAnswer}>Click for Correct Answer</button>
+    {questionAnswered}
     <NextQuestion/>
   </div>
   );
 }
 
+
 var questionNumber = 0;
+var questionData = data[questionNumber].question;
 
 function Question({text, answers}) {
   //var numOfChoices = data[questionNumber].question.choice.length();
@@ -37,7 +45,7 @@ return(
 
 function NextQuestion(){
   return(
-    <div className="NextQuestion"><button>Next Question</button></div>
+    <div className="NextQuestion"><button onClick={null}>Next Question</button></div>
   );
 }
 
