@@ -1,4 +1,7 @@
-function Question(){
+import React, { Component, useState } from "react";
+import Answer from './Answer';
+//import App from './App';
+function Question(props){
 
   //var numOfChoices = data[questionNumber].question.choice.length();
   /* var answers = "";
@@ -7,21 +10,25 @@ function Question(){
   }
   */
 
- var answersChoices = data[questionNumber].question.choices.map((choice) => {
-    
-  if(data[questionNumber][data[questionNumber].correct_choice_index] == choice){
-    return(
-      <Answer text={choice} onClick={() => true}/>
-    )
-  }else{
-  return(
-    <Answer text={choice} onClick={() => false}/>
-  )}
-});
-
 return (
-<div className="Question">{text}
-  {answersChoices}
+<div className="Question">{props.text}
+  {props.choices.map((choice, i) => {
+  console.log("in answerChoice.map");
+  console.log("index:", i);
+  console.log("Correct index", props.correctChoiceIndex);
+  if(props.correctChoiceIndex === i){
+    return (
+      <Answer key={i} text={choice} handleClick={() => {props.checkAnswer(true, choice)}}/>
+    )
+  } else {
+    //console.log("inside else statement");
+    return (
+      <Answer text={choice} key={i} handleClick={() => {
+        props.checkAnswer(false, choice)}
+      }/>
+    )
+  }
+})}
 </div>
 );
 }
